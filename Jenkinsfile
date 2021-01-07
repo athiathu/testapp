@@ -4,6 +4,7 @@ pipeline {
 parameters {
         choice(name: 'BUILD_TYPE', choices: ['dev', 'release'], description: 'Select the environment for Artifactory Push')
         choice(name: 'USER', choices: ['userdebug', 'user'], description: 'Select type of user to start the build ')
+        choice(choices: ['US-EAST-1', 'US-WEST-2'], description: 'What AWS region?', name: 'region')
 
     }
 
@@ -12,11 +13,8 @@ parameters {
             steps {
                     script{
                 
-                         sh '''
-                            ls -la 
-                            echo "${params.USER}"
+                             sh "echo ${params.region}"
 
-                           '''
 
                     }
 
